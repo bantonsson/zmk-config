@@ -40,9 +40,10 @@
         &kp GRAVE      &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSLH
         &mt LCTRL ESC  &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &mt RCTRL SQT
         &mt LSHFT LPAR &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &mt RSHFT RPAR
-   &mt LALT &to SYMFUN &mt LCMD RET &lt NUMNAV SPACE   &lt NUMNAV SPACE &mt RCMD BSPC &mt RALT &to NUMNAV
+   &kp LALT &mt LCMD RET &lt NUMNAV SPACE   &lt NUMNAV SPACE &mt RCMD BSPC &kp RALT
                         >;
                 };
+//   &mt LALT &to SYMFUN &mt LCMD RET &lt NUMNAV SPACE   &lt NUMNAV SPACE &mt RCMD BSPC &mt RALT &to NUMNAV
                 numnav_layer {
                         label = "NUMNAV";
 // -----------------------------------------------------------------------------------------
@@ -54,10 +55,10 @@
    &none          &kp N1 &kp N2 &kp N3 &kp N4     &kp N5   &kp N6   &kp N7    &kp N8    &kp N9    &kp N0   &kp MINUS
    &mt LCTRL ESC  &none  &none  &none  &caps_word &none    &kp LEFT &kp DOWN  &kp UP    &kp RIGHT &kp PLUS &kp RCTRL
    &mt LSHFT LBKT &none  &none  &none  &none      &none    &kp HOME &kp PG_DN &kp PG_UP &kp END   &kp INS  &mt RSHFT RBKT
-       &mt LALT &to QWERTY &mt LCMD TAB &lt SYMFUN SPACE   &lt SYMFUN SPACE &mt RCMD DEL &mt RALT &to SYMFUN
+       &kp LALT &mt LCMD TAB &lt SYMFUN SPACE   &lt SYMFUN SPACE &mt RCMD DEL &kp RALT
                         >;
                 };
-
+//       &mt LALT &to QWERTY &mt LCMD TAB &lt SYMFUN SPACE   &lt SYMFUN SPACE &mt RCMD DEL &mt RALT &to SYMFUN
                 symfun_layer {
                         label = "SYMFUN";
 // -----------------------------------------------------------------------------------------
@@ -69,8 +70,9 @@
    &none          &kp F1       &kp F2       &kp F3       &kp F4       &kp F5        &kp F6   &kp F7   &kp F8 &kp F9    &kp F10 &none
    &mt LCTRL ESC  &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &bt BT_SEL 5  &kp LEFT &kp DOWN &kp UP &kp RIGHT &none   &kp RCTRL
    &kp LSHFT      &none        &none        &none        &out OUT_TOG &bt BT_CLR    &kp F11  &kp F12  &none  &none     &none   &kp RSHFT
-                                &mt LALT &to NUMNAV &mt LCMD TAB &lt QWERTY SPACE   &lt QWERTY SPACE &mt RCMD DEL &mt RALT &to QWERTY
+                                &kp LALT &mt LCMD TAB &lt QWERTY SPACE   &lt QWERTY SPACE &mt RCMD DEL &kp RALT
                         >;
                 };
+//                                &mt LALT &to NUMNAV &mt LCMD TAB &lt QWERTY SPACE   &lt QWERTY SPACE &mt RCMD DEL &mt RALT &to QWERTY
         };
 };
