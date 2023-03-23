@@ -1,0 +1,22 @@
+layout:
+  qmk_keyboard: corne_rotated
+  qmk_layout: LAYOUT_split_3x6_3
+layers:
+  QWERTY:
+    - ["~ `",                  "Q", "W", "E", "R", "T",  "Y", "U", "I", "O", "P", "| \\"]
+    - [{t: "Esc", h: "LCtrl"}, "A", "S", "D", "F", "G",  "H", "J", "K", "L", ": ;", {t: "\" '", h: "RCtrl"}]
+    - [{t: "(", h: "LShft"}  , "Z", "X", "C", "V", "B",  "N", "M", "< ,", "> .", "? /", {t: ")", h: "RShft"}]
+    #
+    - [{t: "SymFun", h: "LAlt"}, {t: "Enter", h: "LCmd"}, {t: "Space", h: "NumNav"},   {t: "Space", h: "NumNav"}, {t: "BSpace", h: "RCmd"}, {t: "NumNav", h: "RAlt"}]
+  NUMNAV:
+    - [null,                   "! 1",  "@ 2",  "# 3",  "$ 4",  "% 5",  "^ 6",  "& 7",  "* 8", "( 9",   ") 0", "_ -"]
+    - [{t: "Esc", h: "LCtrl"}, null, null, null, null, null,           "Left", "Down", "Up",  "Right", "+ =",   {t: "", h: "RCtrl"}]
+    - [{t: "[", h: "LShft"}  , null, null, null, null, null,           "Home", "PgDown", "PgUp", "End", "Insert", {t: "]", h: "RShft"}]
+    #
+    - [{t: "Qwerty", h: "LAlt"}, {t: "Tab", h: "LCmd"}, {t: "Space", h: "SymFun"},   {t: "Space", h: "SymFun"}, {t: "Del", h: "RCmd"}, {t: "SymFun", h: "RAlt"}]
+  SYMFUN:
+    - [null, "F1", "F2", "F3", "F4", "F5",                               "F6","F7", "F8", "F9", "F10", "Å"]
+    - [{t: "Esc", h: "LCtrl"}, "BT_1", "BT_2", "BT_3", "BT_4", "BT_5",   {t: "Left", h: "Ct/Al/Cm"}, {t: "Down", h: "Ct/Al/Cm"}, {t: "Up", h: "Ct/Al/Cm"},  {t: "Right", h: "Ct/Al/Cm"}, "Ö", {t: "Ä", h: "RCtrl"}]
+    - ["LShft", null, null, null, "OUT TOG", "BT CLR",                   null, null, null, null, null, "Rshft"]
+    #
+    - [{t: "NumNav", h: "LAlt"}, "LCmd", {t: "Space", h: "Querty"},   {t: "Space", h: "Querty"}, "RCmd", {t: "Querty", h: "LAlt"}]

@@ -10,8 +10,8 @@
 #include <dt-bindings/zmk/bt.h>
 
 #define QWERTY 0
-#define NUM_LAYER 1
-#define SYM_LAYER 2
+#define NUMNAV 1
+#define SYMFUN 2
 
 / {
   chosen {
@@ -27,37 +27,37 @@
                 default_layer {
                         label = "QWERTY";
 // -----------------------------------------------------------------------------------------
-// |  TAB |  Q  |  W  |  E   |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
-// | CTRL |  A  |  S  |  D   |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  | RET  |
-// | SHFT |  Z  |  X  |  C   |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | SHFT |
-//               | LALT | LCMD | NUM/SPC |   | NUM/SPC | RCMD  | RALT |
+// |  `       |  Q  |  W  |  E   |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | \       |
+// | CTRL/ESC |  A  |  S  |  D   |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  | CTRL/ ' |
+// | SHFT/ (  |  Z  |  X  |  C   |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | SHFT/ ) |
+//            | LALT | LCMD/TAB | NUMNAV/SPC |   | NUMNAV/RET | RCMD/BSPC | RALT |
                         bindings = <
-   &kp TAB        &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
-   &mt LCTRL ESC  &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &mt RCTRL RET
+   &kp GRAVE      &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSLH
+   &mt LCTRL ESC  &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &mt RCTRL SQT
    &mt LSHFT LPAR &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &mt RSHFT RPAR
-          &kp LALT &kp LCMD &lt NUM_LAYER SPACE   &lt NUM_LAYER SPACE &kp RCMD &kp RALT
+         &kp LALT &mt LCMD TAB &lt NUMNAV SPACE   &lt NUMNAV ENTER &mt RCMD BSPC &kp RALT
                         >;
                 };
-                number_layer {
-                        label = "NUMBER";
+                numnav_layer {
+                        label = "NUMNAV";
 // -----------------------------------------------------------------------------------------
-// |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-// | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-//               | LALT | LCMD | SYM/SPC |   | SYM/SPC | RCMD  | RALT |
+// |          |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  |   -     |
+// | CTRL/ESC |     |     |     |     |     |   | LFT | DWN |  UP | RGT |  +  |  CTRL   |
+// | SHFT/ [  |     |     |     |     |     |   | HOM | PGD | PGU | END | INS | SHFT/ ] |
+//           | LALT | LCMD/TAB | SYMFUN/SPC |   | SYMFUN/RET | RCMD/BSPC  | RALT |
                         bindings = <
-   &kp TAB    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
-   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-   &kp LSHFT  &trans       &trans       &trans       &trans       &trans         &trans   &trans   &trans &trans    &trans &trans
-             &kp LALT &kp LCMD &lt SYM_LAYER SPACE   &lt SYM_LAYER SPACE &kp RCMD &kp RALT
+   &trans         &kp N1 &kp N2 &kp N3 &kp N4 &kp N5   &kp N6   &kp N7    &kp N8    &kp N9    &kp N0   &kp MINUS
+   &mt LCTRL ESC  &trans &trans &trans &trans &trans   &kp LEFT &kp DOWN  &kp UP    &kp RIGHT &kp PLUS &kp RCTRL
+   &mt LSHFT LBKT &trans &trans &trans &trans &trans   &kp HOME &kp PG_DN &kp PG_UP &kp END   &kp INS  &mt RSHFT RBKT
+             &kp LALT &kp LCMD &lt SYMFUN SPACE   &lt SYMFUN ENTER &kp RCMD &kp RALT
                         >;
                 };
 
-                symbol_layer {
-                        label = "SYMBOL";
+                symfun_layer {
+                        label = "SYMFUN";
 // -----------------------------------------------------------------------------------------
 // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-// | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
+// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   |     |     |  UP |     |     |      |
 // | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
 //                    | GUI |     | SPC |   | ENT |     | ALT |
                         bindings = <
@@ -67,5 +67,20 @@
                     	     &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
                         >;
                 };
+
+//                symfun_layer {
+//                        label = "SYMFUN";
+//// -----------------------------------------------------------------------------------------
+//// |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
+//// | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
+//// | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
+////                    | GUI |     | SPC |   | ENT |     | ALT |
+//                        bindings = <
+//   &kp  TAB  &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &kp BSPC
+//   &kp LCTRL &trans   &trans &trans   &trans   &trans      &kp MINUS &kp EQUAL &kp LBKT        &kp RBKT &kp BSLH &kp GRAVE
+//   &kp LSHFT &trans   &trans &trans   &trans   &trans      &kp UNDER &kp PLUS  &kp LBRC        &kp RBRC &kp PIPE &kp TILDE
+//                    	     &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
+//                        >;
+//                };
         };
 };
