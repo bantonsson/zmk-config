@@ -19,9 +19,9 @@
   continue-list = <UNDERSCORE MINUS DEL BKSP>;
 };
 
-&mt {
-  quick-tap-ms = <125>;
-};
+//&mt {
+//  quick-tap-ms = <125>;
+//};
 
 / {
   chosen {
@@ -36,9 +36,9 @@
                         compatible = "zmk,behavior-hold-tap";
                         label = "QUICK_MOD_TAP";
                         #binding-cells = <2>;
-                        flavor = "hold-preferred";
-                        tapping-term-ms = <200>;
-                        quick-tap-ms = <125>;
+                        flavor = "balanced";
+                        tapping-term-ms = <300>;
+                        quick-tap-ms = <200>;
                         bindings = <&kp>, <&kp>;
                 };
         };
