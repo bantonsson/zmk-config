@@ -15,8 +15,9 @@
 #define NUMNAV 1
 #define SYMFUN 2
 
-/*  */
-#define LCAG(keycode) APPLY_MODS(MOD_LCTL | MOD_LALT | MOD_LGUI, keycode)
+&caps_word {
+    continue-list = <UNDERSCORE MINUS DEL BKSP>;
+};
 
 / {
   chosen {
@@ -25,11 +26,19 @@
   };
 };
 
-&caps_word {
-    continue-list = <UNDERSCORE MINUS DEL BKSP>;
-};
-
 / {
+        behaviors {
+                qmt: quick-mod-tap {
+                compatible = "zmk,behavior-hold-tap";
+                label = "QUICK_MOD_TAP";
+                #binding-cells = <2>;
+                flavor = "tap-preferred";
+                tapping-term-ms = <250>;
+                quick-tap-ms = <200>;
+                bindings = <&kp>, <&kp>;
+                };
+        };
+
         keymap {
                 compatible = "zmk,keymap";
 
@@ -42,7 +51,7 @@
 //     | LALT/SYMFUN | LCMD/RET | NUMNAV/SPC |   | NUMNAV/SPC | RCMD/BSPC | RALT/NUMNAV |
                         bindings = <
         &kp GRAVE      &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSLH
-        &mt LCTRL ESC  &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &mt RCTRL SQT
+        &kp ESC  &qmt LSHFT A &qmt LCTRL S &qmt LALT D &qmt LCMD F &kp G   &kp H &qmt RCMD J  &qmt RALT K &qmt RCTRL L &qmt RSHFT SEMI &kp SQT
         &mt LSHFT LPAR &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &mt RSHFT RPAR
    &kp LALT &mt LCMD RET &lt NUMNAV SPACE   &lt NUMNAV SPACE &mt RCMD BSPC &kp RALT
                         >;
@@ -72,7 +81,7 @@
 //               | LALT/NUMNAV | LCMD | QWERTY/SPC |   | QWERTY/SPC | RCMD | RALT/QWERTY |
                         bindings = <
    &none          &kp F1       &kp F2       &kp F3       &kp F4       &kp F5        &kp F6   &kp F7   &kp F8 &kp F9    &kp F10 &none
-   &mt LCTRL ESC  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4  &kp LCAG(LEFT) &kp LCAG(DOWN) &kp LCAG(UP) &kp LCAG(RIGHT) &none   &kp RCTRL
+   &mt LCTRL ESC  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4  &kp LEFT &kp DOWN &kp UP &kp RIGHT &none   &kp RCTRL
    &kp LSHFT      &none        &none        &out OUT_USB &out OUT_BLE &bt BT_CLR    &kp F11  &kp F12  &none  &none     &none   &kp RSHFT
                                 &kp LALT &mt LCMD TAB &lt QWERTY SPACE   &lt QWERTY SPACE &mt RCMD DEL &kp RALT
                         >;
