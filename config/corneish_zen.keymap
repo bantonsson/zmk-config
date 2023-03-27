@@ -16,7 +16,11 @@
 #define SYMFUN 2
 
 &caps_word {
-    continue-list = <UNDERSCORE MINUS DEL BKSP>;
+  continue-list = <UNDERSCORE MINUS DEL BKSP>;
+};
+
+&mt {
+  quick-tap-ms = <125>;
 };
 
 / {
@@ -29,13 +33,13 @@
 / {
         behaviors {
                 qmt: quick-mod-tap {
-                compatible = "zmk,behavior-hold-tap";
-                label = "QUICK_MOD_TAP";
-                #binding-cells = <2>;
-                flavor = "tap-preferred";
-                tapping-term-ms = <250>;
-                quick-tap-ms = <200>;
-                bindings = <&kp>, <&kp>;
+                        compatible = "zmk,behavior-hold-tap";
+                        label = "QUICK_MOD_TAP";
+                        #binding-cells = <2>;
+                        flavor = "hold-preferred";
+                        tapping-term-ms = <200>;
+                        quick-tap-ms = <125>;
+                        bindings = <&kp>, <&kp>;
                 };
         };
 
