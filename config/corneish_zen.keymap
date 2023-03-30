@@ -13,7 +13,7 @@
 /* Layers */
 #define QWERTY 0
 #define NUMNAV 1
-#define SYMFUN 2
+#define FUNCTL 2
 
 &caps_word {
   continue-list = <UNDERSCORE MINUS DEL BKSP>;
@@ -41,6 +41,37 @@
                         quick-tap-ms = <200>;
                         bindings = <&kp>, <&kp>;
                 };
+                mbs: mod-bluetooth-select {
+                        compatible = "zmk,behavior-hold-tap";
+                        label = "MOD_BLUETOOTH_SELECT";
+                        #binding-cells = <2>;
+                        flavor = "hold-preferred";
+                        tapping-term-ms = <200>;
+                        bindings = <&kp>, <&bt BT_SEL 1>;
+                };
+                ltb: layer-tap-balanced {
+                        compatible = "zmk,behavior-hold-tap";
+                        label = "LAYER_TAP_BALANCED";
+                        #binding-cells = <2>;
+                        flavor = "balanced";
+                        tapping-term-ms = <250>;
+                        quick-tap-ms = <200>;
+                        bindings = <&mo>, <&kp>;
+                };
+                dt: double-tap {
+                        compatible = "zmk,behavior-tap-dance";
+                        label = "DOUBLE_TAP";
+                        #binding-cells = <2>;
+                        tapping-term-ms = <200>;
+                        bindings = <&kp>, <&kp>;
+                };
+                tto: tap-to-layer {
+                        compatible = "zmk,behavior-tap-dance";
+                        label = "TAP_TO_LAYER";
+                        #binding-cells = <2>;
+                        tapping-term-ms = <200>;
+                        bindings = <&kp>, <&to>;
+                };
         };
 
         keymap {
@@ -48,36 +79,34 @@
 
                 default_layer {
                         label = "QWERTY";
-// -----------------------------------------------------------------------------------------
-// |  `       |  Q  |  W  |  E   |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | \       |
-// | CTRL/ESC |  A  |  S  |  D   |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  | CTRL/ ' |
-// | SHFT/ (  |  Z  |  X  |  C   |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | SHFT/ ) |
-//     | LALT/SYMFUN | LCMD/RET | NUMNAV/SPC |   | NUMNAV/SPC | RCMD/BSPC | RALT/NUMNAV |
+// --------------------------------------------------------------------------------------------------------------------
+// |   |  Q        |  W        |  E        |  R       |  T  |   |  Y  |  U      |  I      |  O        |  P        |   |
+// |   |  LSHFT/A  |  LCTRL/S  |  LALT/D   |  LCMD/F  |  G  |   |  H  |  RCMD/J | RALT/K  |  RCTRL/L  |  RSHFT/;  |   |
+// |   |  Z^(      |  X        |  C        |  V       |  B  |   |  N  |  M      |  ,      |  .        |  /^)      |   |
+//                   | ESC^FUNCTL | FUNCTL/TAB | NUMNAV/SPC |   | NUMNAV/SPC | FUNCTL/BSPC | RET^NUMNAV |
                         bindings = <
-        &kp GRAVE      &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSLH
-        &kp ESC  &mtb LSHFT A &mtb LCTRL S &mtb LALT D &mtb LCMD F &kp G   &kp H &mtb RCMD J  &mtb RALT K &mtb RCTRL L &mtb RSHFT SEMI &kp SQT
-        &mt LSHFT LPAR &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &mt RSHFT RPAR
-   &kp LALT &mt LCMD RET &lt NUMNAV SPACE   &lt NUMNAV SPACE &mtb RCMD BSPC &kp RALT
+        &none &kp Q        &kp W        &kp E       &kp R       &kp T   &kp Y &kp U       &kp I       &kp O        &kp P           &none
+        &none &mtb LSHFT A &mtb LCTRL S &mtb LALT D &mtb LCMD F &kp G   &kp H &mtb RCMD J &mtb RALT K &mtb RCTRL L &mtb RSHFT SEMI &none
+        &none &dt Z LPAR   &kp X        &kp C       &kp V       &kp B   &kp N &kp M       &kp COMMA   &kp DOT      &dt FSLH RPAR   &none
+                    &tto ESC FUNCTL &ltb FUNCTL TAB &ltb NUMNAV SPACE   &ltb NUMNAV SPACE &ltb FUNCTL BSPC &tto RET NUMNAV
                         >;
                 };
-//   &mt LALT &to SYMFUN &mt LCMD RET &lt NUMNAV SPACE   &lt NUMNAV SPACE &mt RCMD BSPC &mt RALT &to NUMNAV
                 numnav_layer {
                         label = "NUMNAV";
 // -----------------------------------------------------------------------------------------
 // |          |  1  |  2  |  3  |  4      |  5  |   |  6  |  7  |  8  |  9  |  0  |   -     |
 // | CTRL/ESC |     |     |     | CPS_WRD |     |   | LFT | DWN |  UP | RGT |  +  |  CTRL   |
 // | SHFT/ [  |     |     |     |         |     |   | HOM | PGD | PGU | END | INS | SHFT/ ] |
-//        | LALT/QWERTY | LCMD/TAB | SYMFUN/SPC |   | SYMFUN/SPC | RCMD/DEL | RALT/SYMFUN |
+//        | LALT/QWERTY | LCMD/TAB | FUNCTL/SPC |   | FUNCTL/SPC | RCMD/DEL | RALT/FUNCTL |
                         bindings = <
    &none          &kp N1 &kp N2 &kp N3 &kp N4     &kp N5   &kp N6   &kp N7    &kp N8    &kp N9    &kp N0   &kp MINUS
    &mt LCTRL ESC  &none  &none  &none  &caps_word &none    &kp LEFT &kp DOWN  &kp UP    &kp RIGHT &kp PLUS &kp RCTRL
    &mt LSHFT LBKT &none  &none  &none  &none      &none    &kp HOME &kp PG_DN &kp PG_UP &kp END   &kp INS  &mt RSHFT RBKT
-       &kp LALT &mt LCMD TAB &lt SYMFUN SPACE   &lt SYMFUN SPACE &mt RCMD DEL &kp RALT
+       &to QWERTY &mt LCMD TAB &lt FUNCTL SPACE   &lt FUNCTL SPACE &mt RCMD DEL &to FUNCTL
                         >;
                 };
-//       &mt LALT &to QWERTY &mt LCMD TAB &lt SYMFUN SPACE   &lt SYMFUN SPACE &mt RCMD DEL &mt RALT &to SYMFUN
-                symfun_layer {
-                        label = "SYMFUN";
+                functl_layer {
+                        label = "FUNCTL";
 // -----------------------------------------------------------------------------------------
 // |          | F1  | F2  | F3  | F4      | F5     |   | F6  | F7  | F8 | F9 | F10 | Å      |
 // | CTRL/ESC | BT1 | BT2 | BT3 | BT4     | BT5    |   |     |     |    |    | Ö   | CTRL/Ä |
@@ -87,7 +116,7 @@
    &none          &kp F1       &kp F2       &kp F3       &kp F4       &kp F5        &kp F6   &kp F7   &kp F8 &kp F9    &kp F10 &none
    &mt LCTRL ESC  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4  &kp LEFT &kp DOWN &kp UP &kp RIGHT &none   &kp RCTRL
    &kp LSHFT      &none        &none        &out OUT_USB &out OUT_BLE &bt BT_CLR    &kp F11  &kp F12  &none  &none     &none   &kp RSHFT
-                                &kp LALT &mt LCMD TAB &lt QWERTY SPACE   &lt QWERTY SPACE &mt RCMD DEL &kp RALT
+                                &to NUMNAV &mt LCMD TAB &lt QWERTY SPACE   &lt QWERTY SPACE &mt RCMD DEL &to QWERTY
                         >;
                 };
 //                                &mt LALT &to NUMNAV &mt LCMD TAB &lt QWERTY SPACE   &lt QWERTY SPACE &mt RCMD DEL &mt RALT &to QWERTY
