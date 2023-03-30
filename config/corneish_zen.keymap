@@ -50,23 +50,14 @@
                         quick-tap-ms = <200>;
                         bindings = <&mo>, <&kp>;
                 };
-                dt: double-tap {
-                        compatible = "zmk,behavior-hold-tap";
-                        label = "DOUBLE_TAP";
-                        #binding-cells = <2>;
-                        flavor = "tap-preferred";
-                        tapping-term-ms = <250>;
-                        quick-tap-ms = <200>;
-                        bindings = <&kp>, <&kp>;
-                };
                 tto: tap-to-layer {
                         compatible = "zmk,behavior-hold-tap";
                         label = "TAP_TO_LAYER";
                         #binding-cells = <2>;
-                        flavor = "tap-preferred";
+                        flavor = "balanced";
                         tapping-term-ms = <250>;
                         quick-tap-ms = <200>;
-                        bindings = <&kp>, <&to>;
+                        bindings = <&to>, <&kp>;
                 };
         };
 
@@ -83,22 +74,22 @@
                         bindings = <
         &none &kp Q        &kp W        &kp E       &kp R       &kp T   &kp Y &kp U       &kp I       &kp O        &kp P           &none
         &none &mtb LSHFT A &mtb LCTRL S &mtb LALT D &mtb LCMD F &kp G   &kp H &mtb RCMD J &mtb RALT K &mtb RCTRL L &mtb RSHFT SEMI &none
-        &none &dt Z LPAR   &kp X        &kp C       &kp V       &kp B   &kp N &kp M       &kp COMMA   &kp DOT      &dt FSLH RPAR   &none
-                    &tto ESC FUNCTL &ltb FUNCTL TAB &ltb NUMNAV SPACE   &ltb NUMNAV SPACE &ltb FUNCTL BSPC &tto RET NUMNAV
+        &none &mtb LPAR Z  &kp X        &kp C       &kp V       &kp B   &kp N &kp M       &kp COMMA   &kp DOT      &mtb RPAR FSLH  &none
+                    &tto FUNCTL ESC &ltb FUNCTL TAB &ltb NUMNAV SPACE   &ltb NUMNAV SPACE &ltb FUNCTL BSPC &tto NUMNAV RET
                         >;
                 };
                 numnav_layer {
                         label = "NUMNAV";
 // -----------------------------------------------------------------------------------------
-// |          |  1  |  2  |  3  |  4      |  5  |   |  6  |  7  |  8  |  9  |  0  |   -     |
-// | CTRL/ESC |     |     |     | CPS_WRD |     |   | LFT | DWN |  UP | RGT |  +  |  CTRL   |
-// | SHFT/ [  |     |     |     |         |     |   | HOM | PGD | PGU | END | INS | SHFT/ ] |
-//        | LALT/QWERTY | LCMD/TAB | FUNCTL/SPC |   | FUNCTL/SPC | RCMD/DEL | RALT/FUNCTL |
+// |   |  1  |  2  |  3  |  4      |  5  |   |  6  |  7  |  8  |  9  |  0  |   |
+// |   |     |     |     | CPS_WRD |     |   | LFT | DWN |  UP | RGT |  +  |   |
+// |   |     |     |     |         |     |   | HOM | PGD | PGU | END | INS |   |
+// | LALT/QWERTY | LCMD/TAB | FUNCTL/SPC |   | FUNCTL/SPC | RCMD/DEL | RALT/FUNCTL |
                         bindings = <
-   &none          &kp N1 &kp N2 &kp N3 &kp N4     &kp N5   &kp N6   &kp N7    &kp N8    &kp N9    &kp N0   &kp MINUS
-   &mt LCTRL ESC  &none  &none  &none  &caps_word &none    &kp LEFT &kp DOWN  &kp UP    &kp RIGHT &kp PLUS &kp RCTRL
-   &mt LSHFT LBKT &none  &none  &none  &none      &none    &kp HOME &kp PG_DN &kp PG_UP &kp END   &kp INS  &mt RSHFT RBKT
-               &tto ESC QWERTY &ltb FUNCTL TAB &kp SPACE   &kp SPACE &ltb FUNCTL BSPC &tto RET FUNCTL
+   &none  &kp N1            &kp N2          &kp N3          &kp N4          &kp N5     &kp N6   &kp N7         &kp N8       &kp N9           &kp N0         &none
+   &none  &mtb LSHFT GRAVE  &mtb LCTRL HOME &mtb LALT PG_UP &mtb LCMD PG_DN &kp END    &kp LEFT &mtb RCMD DOWN &mtb RALT UP &mtb RCTRL RIGHT &mtb RSHFT SQT &none
+   &none  &kp LBKT          &none           &none           &none           &kp CAPS   &kp DEL  &kp MINUS      &kp EQUAL    &kp BSLH         &kp RBKT       &none
+                                           &tto QWERTY ESC &ltb FUNCTL TAB &kp SPACE   &kp SPACE &ltb FUNCTL BSPC &tto FUNCTL RET
                         >;
                 };
                 functl_layer {
@@ -110,9 +101,9 @@
 //               | LALT/NUMNAV | LCMD | QWERTY/SPC |   | QWERTY/SPC | RCMD | RALT/QWERTY |
                         bindings = <
    &none  &kp F1       &kp F2       &kp F3       &kp F4       &kp F5         &kp F6     &kp F7        &kp F8       &kp F9         &kp F10        &none
-   &none  &none        &none        &none        &none        &none          &none      &kp RCMD      &kp RALT     &mtb RCTRL F11 &mtb RSHFT F12 &none
+   &none  &kp LSHFT    &kp LCTRL    &kp LALT     &kp LCMD     &none          &none      &kp RCMD      &kp RALT     &mtb RCTRL F11 &mtb RSHFT F12 &none
    &none  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &bt BT_CLR &out OUT_BLE  &out OUT_USB &none          &none          &none
-                                &tto ESC NUMNAV &kp TAB &kp SPACE   &kp SPACE &kp BSPC &tto RET QWERTY
+                                         &tto NUMNAV ESC &kp TAB &kp SPACE   &kp SPACE &kp BSPC &tto QWERTY RET
                         >;
                 };
 //                                &mt LALT &to NUMNAV &mt LCMD TAB &lt QWERTY SPACE   &lt QWERTY SPACE &mt RCMD DEL &mt RALT &to QWERTY
