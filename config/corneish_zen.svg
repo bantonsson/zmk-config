@@ -321,19 +321,14 @@ path {
 <rect rx="6.0" ry="6.0" x="816.0" y="740.3061339178928" width="52.0" height="52.0" class=""/>
 <rect rx="6.0" ry="6.0" x="32.0" y="796.3061339178928" width="52.0" height="52.0" class=""/>
 <rect rx="6.0" ry="6.0" x="88.0" y="796.3061339178928" width="52.0" height="52.0" class=""/>
-<text x="114.0" y="822.3061339178928" class="tap">BT_1</text>
 <text x="114.0" y="846.3061339178928" class="hold">LShft</text>
 <rect rx="6.0" ry="6.0" x="144.0" y="782.3061339178928" width="52.0" height="52.0" class=""/>
-<text x="170.0" y="808.3061339178928" class="tap">BT_2</text>
 <text x="170.0" y="832.3061339178928" class="hold">LCtrl</text>
 <rect rx="6.0" ry="6.0" x="200.0" y="775.3061339178928" width="52.0" height="52.0" class=""/>
-<text x="226.0" y="801.3061339178928" class="tap">BT_3</text>
 <text x="226.0" y="825.3061339178928" class="hold">LAlt</text>
 <rect rx="6.0" ry="6.0" x="256.0" y="782.3061339178928" width="52.0" height="52.0" class=""/>
-<text x="282.0" y="808.3061339178928" class="tap">BT_4</text>
 <text x="282.0" y="832.3061339178928" class="hold">LCmd</text>
 <rect rx="6.0" ry="6.0" x="312.0" y="789.3061339178928" width="52.0" height="52.0" class=""/>
-<text x="338.0" y="815.3061339178928" class="tap">BT_5</text>
 <rect rx="6.0" ry="6.0" x="536.0" y="789.3061339178928" width="52.0" height="52.0" class=""/>
 <rect rx="6.0" ry="6.0" x="592.0" y="782.3061339178928" width="52.0" height="52.0" class=""/>
 <text x="618.0" y="832.3061339178928" class="hold">RCmd</text>
@@ -348,16 +343,21 @@ path {
 <rect rx="6.0" ry="6.0" x="816.0" y="796.3061339178928" width="52.0" height="52.0" class=""/>
 <rect rx="6.0" ry="6.0" x="32.0" y="852.3061339178928" width="52.0" height="52.0" class=""/>
 <rect rx="6.0" ry="6.0" x="88.0" y="852.3061339178928" width="52.0" height="52.0" class=""/>
+<text x="114.0" y="878.3061339178928" class="tap">BT_1</text>
 <rect rx="6.0" ry="6.0" x="144.0" y="838.3061339178928" width="52.0" height="52.0" class=""/>
+<text x="170.0" y="864.3061339178928" class="tap">BT_2</text>
 <rect rx="6.0" ry="6.0" x="200.0" y="831.3061339178928" width="52.0" height="52.0" class=""/>
+<text x="226.0" y="857.3061339178928" class="tap">BT_3</text>
 <rect rx="6.0" ry="6.0" x="256.0" y="838.3061339178928" width="52.0" height="52.0" class=""/>
-<text x="282.0" y="864.3061339178928" class="tap">
-<tspan x="282.0" dy="-0.6em">OUT</tspan><tspan x="282.0" dy="1.2em">TOG</tspan></text>
+<text x="282.0" y="864.3061339178928" class="tap">BT_4</text>
 <rect rx="6.0" ry="6.0" x="312.0" y="845.3061339178928" width="52.0" height="52.0" class=""/>
-<text x="338.0" y="871.3061339178928" class="tap">
-<tspan x="338.0" dy="-0.6em">BT</tspan><tspan x="338.0" dy="1.2em">CLR</tspan></text>
+<text x="338.0" y="871.3061339178928" class="tap">BT_5</text>
 <rect rx="6.0" ry="6.0" x="536.0" y="845.3061339178928" width="52.0" height="52.0" class=""/>
+<text x="562.0" y="871.3061339178928" class="tap">
+<tspan x="562.0" dy="-0.6em">BT</tspan><tspan x="562.0" dy="1.2em">CLR</tspan></text>
 <rect rx="6.0" ry="6.0" x="592.0" y="838.3061339178928" width="52.0" height="52.0" class=""/>
+<text x="618.0" y="864.3061339178928" class="tap">
+<tspan x="618.0" dy="-0.6em">OUT</tspan><tspan x="618.0" dy="1.2em">TOG</tspan></text>
 <rect rx="6.0" ry="6.0" x="648.0" y="831.3061339178928" width="52.0" height="52.0" class=""/>
 <rect rx="6.0" ry="6.0" x="704.0" y="838.3061339178928" width="52.0" height="52.0" class=""/>
 <rect rx="6.0" ry="6.0" x="760.0" y="852.3061339178928" width="52.0" height="52.0" class=""/>

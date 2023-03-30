@@ -16,7 +16,7 @@ layers:
     - [{t: "Esc", h: "Qwerty"}, {t: "Tab", h: "<FunCtl>"}, "Space",   "Space", {t: "BSpc", h: "<FunCtl>"}, {t: "Ret", h: "FunCtl"}]
   FUNCTL:
     - [null, "F1"                   , "F2", "F3", "F4", "F5",                               "F6","F7", "F8", "F9", "F10", null]
-    - [null, {t: "BT_1", h: "LShft"}, {t: "BT_2", h: "LCtrl"}, {t: "BT_3", h: "LAlt"}, {t: "BT_4", h: "LCmd"}, "BT_5",   null, {t: "", h: "RCmd"}, {t: "", h: "RAlt"},  {t: "F11", h: "RCtrl"}, {t: "F12", h: "RShft"}, null]
-    - [null, null, null, null, "OUT TOG", "BT CLR",                   null, null, null, null, null, null]
+    - [null, {t: "", h: "LShft"}, {t: "", h: "LCtrl"}, {t: "", h: "LAlt"}, {t: "", h: "LCmd"}, null,   null, {t: "", h: "RCmd"}, {t: "", h: "RAlt"},  {t: "F11", h: "RCtrl"}, {t: "F12", h: "RShft"}, null]
+    - [null, "BT_1", "BT_2", "BT_3", "BT_4", "BT_5",                   "BT_CLR", "OUT_BLE", "OUT_USB", null, null, null]
     #
     - [{t: "Esc", h: "NumNav"}, "Tab", "Space",   "Space", "BSpc", {t: "Ret", h: "Qwerty"}]

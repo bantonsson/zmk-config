@@ -41,14 +41,6 @@
                         quick-tap-ms = <200>;
                         bindings = <&kp>, <&kp>;
                 };
-                mbs: mod-bluetooth-select {
-                        compatible = "zmk,behavior-hold-tap";
-                        label = "MOD_BLUETOOTH_SELECT";
-                        #binding-cells = <2>;
-                        flavor = "hold-preferred";
-                        tapping-term-ms = <200>;
-                        bindings = <&kp>, <&bt BT_SEL 1>;
-                };
                 ltb: layer-tap-balanced {
                         compatible = "zmk,behavior-hold-tap";
                         label = "LAYER_TAP_BALANCED";
@@ -59,17 +51,21 @@
                         bindings = <&mo>, <&kp>;
                 };
                 dt: double-tap {
-                        compatible = "zmk,behavior-tap-dance";
+                        compatible = "zmk,behavior-hold-tap";
                         label = "DOUBLE_TAP";
                         #binding-cells = <2>;
-                        tapping-term-ms = <200>;
+                        flavor = "tap-preferred";
+                        tapping-term-ms = <250>;
+                        quick-tap-ms = <200>;
                         bindings = <&kp>, <&kp>;
                 };
                 tto: tap-to-layer {
-                        compatible = "zmk,behavior-tap-dance";
+                        compatible = "zmk,behavior-hold-tap";
                         label = "TAP_TO_LAYER";
                         #binding-cells = <2>;
-                        tapping-term-ms = <200>;
+                        flavor = "tap-preferred";
+                        tapping-term-ms = <250>;
+                        quick-tap-ms = <200>;
                         bindings = <&kp>, <&to>;
                 };
         };
@@ -102,7 +98,7 @@
    &none          &kp N1 &kp N2 &kp N3 &kp N4     &kp N5   &kp N6   &kp N7    &kp N8    &kp N9    &kp N0   &kp MINUS
    &mt LCTRL ESC  &none  &none  &none  &caps_word &none    &kp LEFT &kp DOWN  &kp UP    &kp RIGHT &kp PLUS &kp RCTRL
    &mt LSHFT LBKT &none  &none  &none  &none      &none    &kp HOME &kp PG_DN &kp PG_UP &kp END   &kp INS  &mt RSHFT RBKT
-       &to QWERTY &mt LCMD TAB &lt FUNCTL SPACE   &lt FUNCTL SPACE &mt RCMD DEL &to FUNCTL
+               &tto ESC QWERTY &ltb FUNCTL TAB &kp SPACE   &kp SPACE &ltb FUNCTL BSPC &tto RET FUNCTL
                         >;
                 };
                 functl_layer {
@@ -113,10 +109,10 @@
 // | SHFT     |     |     |     | OUT_TOG | BT_CLR |   | F11 | F12 |    |    |     | SHFT   |
 //               | LALT/NUMNAV | LCMD | QWERTY/SPC |   | QWERTY/SPC | RCMD | RALT/QWERTY |
                         bindings = <
-   &none          &kp F1       &kp F2       &kp F3       &kp F4       &kp F5        &kp F6   &kp F7   &kp F8 &kp F9    &kp F10 &none
-   &mt LCTRL ESC  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4  &kp LEFT &kp DOWN &kp UP &kp RIGHT &none   &kp RCTRL
-   &kp LSHFT      &none        &none        &out OUT_USB &out OUT_BLE &bt BT_CLR    &kp F11  &kp F12  &none  &none     &none   &kp RSHFT
-                                &to NUMNAV &mt LCMD TAB &lt QWERTY SPACE   &lt QWERTY SPACE &mt RCMD DEL &to QWERTY
+   &none  &kp F1       &kp F2       &kp F3       &kp F4       &kp F5         &kp F6     &kp F7        &kp F8       &kp F9         &kp F10        &none
+   &none  &none        &none        &none        &none        &none          &none      &kp RCMD      &kp RALT     &mtb RCTRL F11 &mtb RSHFT F12 &none
+   &none  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &bt BT_CLR &out OUT_BLE  &out OUT_USB &none          &none          &none
+                                &tto ESC NUMNAV &kp TAB &kp SPACE   &kp SPACE &kp BSPC &tto RET QWERTY
                         >;
                 };
 //                                &mt LALT &to NUMNAV &mt LCMD TAB &lt QWERTY SPACE   &lt QWERTY SPACE &mt RCMD DEL &mt RALT &to QWERTY
