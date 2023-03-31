@@ -1,5 +1,17 @@
+/* unicode for mac */
+#define HOST_OS 2
+
 /* source keypos definitions */
-#include "../zmk-nodefree-config/keypos_def/keypos_36keys.h"
+#include "../zmk-nodefree-config/keypos_def/keypos_42keys.h"
+
+/* ignore left and right outer column */
+#define X_LT &none
+#define X_LM &none
+#define X_LB &none
+#define X_RT &none
+#define X_RM &none
+#define X_RB &none
+#define X_RH &none
 
 /* map Zen's extra keys */
 #define X_LH  &smart_mouse  // thumb row, left
@@ -11,6 +23,5 @@
 /* source the main keymap */
 #include "base.keymap"
 
-/* use 5-column layout for Zen */
-/ { chosen { zmk,matrix_transform = &five_column_transform; }; };
-
+/* use 6-column layout for Zen */
+/ { chosen { zmk,matrix_transform = &default_transform; }; };
