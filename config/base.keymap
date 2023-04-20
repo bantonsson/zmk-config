@@ -36,18 +36,19 @@ ZMK_CONDITIONAL_LAYER(FN NUM, SYS)    // FN + NUM --> SYS
 
 #define NAV_LEFT  &mt HOME     LEFT    // tap: left  | long-tap: beginning of line
 #define NAV_RIGHT &mt END      RIGHT   // tap: right | long-tap: end       of line
-#define NAV_UP    &mt LC(HOME) UP      // tap: up    | long-tap: beginning of document
-#define NAV_DOWN  &mt LC(END)  DOWN    // tap: down  | long-tap: end       of document
-#define NAV_BSPC  &mt LC(BSPC) BSPC    // tap: bspc  | long-tap: delete word backward
-#define NAV_DEL   &mt LC(DEL)  DEL     // tap: del   | long-tap: delete word forward
+#define NAV_UP    &mt LG(HOME) UP      // tap: up    | long-tap: beginning of document
+#define NAV_DOWN  &mt LG(END)  DOWN    // tap: down  | long-tap: end       of document
+// These do not work on a Mac
+//#define NAV_BSPC  &mt LC(BSPC) BSPC    // tap: bspc  | long-tap: delete word backward
+//#define NAV_DEL   &mt LC(DEL)  DEL     // tap: del   | long-tap: delete word forward
 
 #define XXX &none
 #define ___ &trans
 
-#define CANCEL      &kp K_CANCEL             // cancel caps-word, num-word and smart-mouse
-#define DSK_PREV    &hmr RSHFT LG(LC(LEFT))  // previous desktop
-#define DSK_NEXT    &hmr LALT LG(LC(RIGHT))  // next     desktop
-#define VOL_DOWN    &hmr LCTRL C_VOL_DN
+#define CANCEL      &kp K_CANCEL                 // cancel caps-word, num-word and smart-mouse
+#define DSK_PREV    &hmr RCMD  LC(LA(LG(LEFT)))  // previous desktop
+#define DSK_NEXT    &hmr RCTRL LC(LA(LG(RIGHT))) // next     desktop
+#define VOL_DOWN    &hmr RALT  C_VOL_DN
 
 /* Settings */
 
@@ -172,11 +173,11 @@ ZMK_BEHAVIOR(copy_cut, tap_dance,
 )
 
 // Windows sleep key
-ZMK_BEHAVIOR(win_sleep, macro,
-    wait-ms = <100>;
-    tap-ms = <5>;
-    bindings = <&kp LG(X) &kp U &kp S>;
-)
+//ZMK_BEHAVIOR(win_sleep, macro,
+//    wait-ms = <100>;
+//    tap-ms = <5>;
+//    bindings = <&kp LG(X) &kp U &kp S>;
+//)
 
 // Sticky layer + sticky shift (workaround for issue #1421)
 ZMK_BEHAVIOR(uc_shift, macro,
@@ -213,16 +214,16 @@ ZMK_BEHAVIOR(dot_morph, mod_morph,
 )
 
 // tap: qmark | shift + tap: excl
-ZMK_BEHAVIOR(qexcl, mod_morph,
-    bindings = <&kp QMARK>, <&kp EXCL>;
-    mods = <(MOD_LSFT|MOD_RSFT)>;
-)
+//ZMK_BEHAVIOR(qexcl, mod_morph,
+//    bindings = <&kp QMARK>, <&kp EXCL>;
+//    mods = <(MOD_LSFT|MOD_RSFT)>;
+//)
 
 // Alt+Tab swapper, requires PR #1366
-ZMK_BEHAVIOR(swap, tri_state,
-    bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
-    ignored-key-positions = <LT2>;
-)
+//ZMK_BEHAVIOR(swap, tri_state,
+//    bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
+//    ignored-key-positions = <LT2>;
+//)
 
 /* Keymap */
 
@@ -232,15 +233,15 @@ ZMK_LAYER(base,
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LM     &hml LSHFT A  &hml LCTRL S  &hml LALT D   &hml LCMD F   &kp G           X_MM     &kp H         &hmr RCMD J   &hmr RALT K   &hmr RCTRL L  &hmr RSHFT SQT  X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB     &kp Z         &kp X         &kp C         &kp V         &kp B           X_MB     &kp N         &kp M         &comma_morph  &dot_morph    &qexcl          X_RB
+    X_LB     &kp Z         &kp X         &kp C         &kp V         &kp B           X_MB     &kp N         &kp M         &comma_morph  &dot_morph    &kp SLASH       X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
-    X_LH                                               &lt FN RET    &lt_spc NAV 0   X_MH     &bs_del       NUM_WORD                                                  X_RH
+    X_LH                                               &ss_cw        &lt_spc NAV 0   X_MH     &lt_spc FN 0  NUM_WORD                                                  X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
 )
 
 ZMK_LAYER(nav,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
-    X_LT     ___           ___           &kp LS(TAB)   &swap         ___             X_MT     &kp PG_UP     NAV_BSPC      NAV_UP        NAV_DEL       ___             X_RT
+    X_LT     ___           ___           ___           ___           ___             X_MT     &kp PG_UP     &kp BSPC      NAV_UP        &kp DEL       ___             X_RT
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LM     &sk LSHFT     &sk LCTRL     &sk LALT      &sk LCMD      ___             X_MM     &kp PG_DN     NAV_LEFT      NAV_DOWN      NAV_RIGHT     &kp RET         X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
@@ -252,13 +253,13 @@ ZMK_LAYER(nav,
 
 ZMK_LAYER(fn,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
-    X_LT     &kp F12       &kp F7        &kp F8        &kp F9        ___             X_MT     ___           &kp C_PREV    &kp C_VOL_UP  &kp C_NEXT    &win_sleep      X_RT
+    X_LT     &kp F12       &kp F7        &kp F8        &kp F9        ___             X_MT     ___           &kp C_PREV    &kp C_VOL_UP  &kp C_NEXT    ___             X_RT
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LM     &kp F11       &kp F4        &kp F5        &kp F6        ___             X_MM     ___           DSK_PREV      VOL_DOWN      DSK_NEXT      ___             X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB     &kp F10       &kp F1        &kp F2        &kp F3        ___             X_MB     ___           ___           ___           ___           ___             X_RB
+    X_LB     &kp F10       &kp F1        &kp F2        &kp F3        ___             X_MB     ___           ___           &kp C_MUTE    &kp C_PP      ___             X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
-    X_LH                                               ___           ___             X_MH     &kp C_MUTE    &kp C_PP                                                  X_RH
+    X_LH                                               &smart_mouse  ___             X_MH     ___           ___                                                       X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
 )
 
@@ -280,7 +281,7 @@ ZMK_LAYER(sys,
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LM     ___           ___           ___           ___           &bootloader     X_MM     &bootloader   ___           ___           ___           ___             X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB     ___           ___           ___           ___           &reset          X_MB     &reset        ___           ___           ___           ___             X_RB
+    X_LB     ___           ___           ___           ___           &sys_reset      X_MB     &sys_reset    ___           ___           ___           ___             X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
     X_LH                                               ___           ___             X_MH     ___           ___                                                       X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
