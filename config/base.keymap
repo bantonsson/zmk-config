@@ -20,22 +20,22 @@
 #define MOUSE 6
 
 /* Homerow mods used in combos */
-#define HRL4 LCTRL
-#define HRL3 LSHFT
+#define HRL4 LSHFT
+#define HRL3 LCTRL
 #define HRL2 LALT
 #define HRL1 LCMD
 #define HRR1 RCMD
 #define HRR2 RALT
-#define HRR3 RSHFT
-#define HRR4 RCTRL
-#define HRL_4(key) LC(key)
-#define HRL_3(key) LS(key)
+#define HRR3 RCTRL
+#define HRR4 RSHFT
+#define HRL_4(key) LS(key)
+#define HRL_3(key) LC(key)
 #define HRL_2(key) LA(key)
 #define HRL_1(key) LG(key)
 #define HRR_1(key) RG(key)
 #define HRR_2(key) RA(key)
-#define HRR_3(key) RS(key)
-#define HRR_4(key) RC(key)
+#define HRR_3(key) RC(key)
+#define HRR_4(key) RS(key)
 
 #include "combos.dtsi"  // must be sourced after layer-shortcuts
 #include "mouse.dtsi"
@@ -261,13 +261,13 @@ ZMK_LAYER(base,
 
 ZMK_LAYER(nav,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
-    X_LT     ___           ___           &kp LS(TAB)   &app_next     ___             X_MT     ___           &kp PG_UP     &kp PG_DN     &kp BSPC      &kp DEL         X_RT
+    X_LT     ___           ___           &kp LS(TAB)   &app_next     ___             X_MT     ___           &kp PG_DN     &kp PG_UP     &kp BSPC      &kp DEL         X_RT
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LM     &sk HRL4      &sk HRL3      &sk HRL2      &sk HRL1      CANCEL          X_MM     NAV_LEFT      NAV_DOWN      NAV_UP        NAV_RIGHT     &kp RET         X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LB     ___           ___           &kp LS(GRAVE) &win_next     ___             X_MB     &kp INS       &kp TAB       &kp LT        &kp GT        ___             X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
-    X_LH                                               ___           ___             X_MH     &lt SYS BSPC  &kp RET                                                   X_RH
+    X_LH                                               ___           ___             X_MH     &mo SYS       &kp BSPC                                                  X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
 )
 
@@ -279,7 +279,7 @@ ZMK_LAYER(fn,
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LB     ___           ___           ___           ___           ___             X_MB     &kp C_PREV    &kp C_MUTE    &kp C_PP      &kp C_NEXT    &kp F12         X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
-    X_LH                                               &kp TAB       &lt SYS DEL     X_MH     ___           ___                                                       X_RH
+    X_LH                                               &kp DEL       &mo SYS         X_MH     ___           ___                                                       X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
 )
 
