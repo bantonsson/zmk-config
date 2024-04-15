@@ -15,8 +15,8 @@
 // use page up/down for something better since they have moved to the arrow keys
 // add swedish characters to the unicode layers using the US Mac keymap
 
-#define DEF 0
-#define COLE 1
+#define COLE 0
+#define QWERTY 1
 #define NAV 2
 #define FN 3
 #define NUM 4
@@ -25,22 +25,22 @@
 #define MOUSE 7
 
 /* Homerow mods used in combos */
-#define HRL4 LSHFT
-#define HRL3 LCTRL
+#define HRL4 LCTRL
+#define HRL3 LSHFT
 #define HRL2 LALT
 #define HRL1 LCMD
 #define HRR1 RCMD
 #define HRR2 RALT
-#define HRR3 RCTRL
-#define HRR4 RSHFT
-#define HRL_4(key) LS(key)
-#define HRL_3(key) LC(key)
+#define HRR3 RSHFT
+#define HRR4 RCTRL
+#define HRL_4(key) LC(key)
+#define HRL_3(key) LS(key)
 #define HRL_2(key) LA(key)
 #define HRL_1(key) LG(key)
 #define HRR_1(key) RG(key)
 #define HRR_2(key) RA(key)
-#define HRR_3(key) RC(key)
-#define HRR_4(key) RS(key)
+#define HRR_3(key) RS(key)
+#define HRR_4(key) RC(key)
 
 #include "combos.dtsi"  // must be sourced after layer-shortcuts
 #include "mouse.dtsi"
@@ -259,18 +259,6 @@ ZMK_BEHAVIOR(tab_next, tri_state,
 
 /* Keymap */
 
-ZMK_LAYER(base,
-//╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
-    X_LT     &kp Q         &kp W         &kp E         &kp R         &kp T           X_MT     &kp Y         &kp U         &kp I         &kp O         &kp P           X_RT
-//├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LM     &hml HRL4 A   &hml HRL3 S   &hml HRL2 D   &hml HRL1 F   &kp G           X_MM     &kp H         &hmr HRR1 J   &hmr HRR2 K   &hmr HRR3 L   &hmr HRR4 SQT   X_RM
-//├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB     &kp Z         &kp X         &kp C         &kp V         &kp B           X_MB     &kp N         &kp M         &comma_morph  &dot_morph    &kp SLASH       X_RB
-//├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
-    X_LH                                               &ss_cw        &lt_spc NAV 0   X_MH     &lt_spc FN 0  NUM_WORD                                                  X_RH
-//╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
-)
-
 ZMK_LAYER(cole,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
     X_LT     &kp Q         &kp W         &kp F         &kp P         &kp B           X_MT     &kp J         &kp L         &kp U         &kp Y         &kp SQT         X_RT
@@ -278,6 +266,18 @@ ZMK_LAYER(cole,
     X_LM     &hml HRL4 A   &hml HRL3 R   &hml HRL2 S   &hml HRL1 T   &kp G           X_MM     &kp M         &hmr HRR1 N   &hmr HRR2 E   &hmr HRR3 I   &hmr HRR4 O     X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LB     &kp Z         &kp X         &kp C         &kp D         &kp V           X_MB     &kp K         &kp H         &comma_morph  &dot_morph    &kp SLASH       X_RB
+//├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
+    X_LH                                               &ss_cw        &lt_spc FN 0    X_MH     &lt_spc NAV 0  NUM_WORD                                                  X_RH
+//╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
+)
+
+ZMK_LAYER(qwerty,
+//╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
+    X_LT     &kp Q         &kp W         &kp E         &kp R         &kp T           X_MT     &kp Y         &kp U         &kp I         &kp O         &kp P           X_RT
+//├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
+    X_LM     &hml HRL4 A   &hml HRL3 S   &hml HRL2 D   &hml HRL1 F   &kp G           X_MM     &kp H         &hmr HRR1 J   &hmr HRR2 K   &hmr HRR3 L   &hmr HRR4 SQT   X_RM
+//├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
+    X_LB     &kp Z         &kp X         &kp C         &kp V         &kp B           X_MB     &kp N         &kp M         &comma_morph  &dot_morph    &kp SLASH       X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
     X_LH                                               ___           ___             X_MH     ___           ___                                                       X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
@@ -291,7 +291,7 @@ ZMK_LAYER(nav,
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LB     ___           ___           &kp LS(GRAVE) &win_next     ___             X_MB     &kp INS       &kp TAB       &kp LT        &kp GT        ___             X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
-    X_LH                                               ___           ___             X_MH     &lt SYS BSPC  &kp ESC                                                   X_RH
+    X_LH                                               &kp TAB       &lt SYS DEL     X_MH     ___           ___                                                       X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
 )
 
@@ -301,9 +301,9 @@ ZMK_LAYER(fn,
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LM     &sk HRL4      &sk HRL3      &sk HRL2      &sk HRL1      &smart_mouse    X_MM     DSK_PREV      VOL_DOWN      VOL_UP        DSK_NEXT      &kp F11         X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB     ___           ___           &kp LS(TAB)   &tab_next     &tog COLE       X_MB     &kp C_PREV    &kp C_MUTE    &kp C_PP      &kp C_NEXT    &kp F12         X_RB
+    X_LB     ___           ___           &kp LS(TAB)   &tab_next     &tog QWERTY     X_MB     &kp C_PREV    &kp C_MUTE    &kp C_PP      &kp C_NEXT    &kp F12         X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
-    X_LH                                               &kp TAB       &lt SYS DEL     X_MH     ___           ___                                                       X_RH
+    X_LH                                               ___           ___             X_MH     &lt SYS BSPC  &kp ESC                                                   X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
 )
 
