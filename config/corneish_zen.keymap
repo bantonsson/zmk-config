@@ -1,9 +1,19 @@
 /* source key position labels */
-#include "zmk-helpers/key-labels/36.h"
+#include "zmk-helpers/key-labels/42.h"
+/* TODO once the outer columns go, then do this */
+/* #include "zmk-helpers/key-labels/36.h" */
 
 /* map Zen's extra keys */
 #define X_LH  &kp LGUI      // thumb row, left
 #define X_RH  &smart_mouse  // thumb row, right
+
+/* since we have 2 extra columns that we don't use map the keys to &none */
+#define X_LT &none
+#define X_LM &none
+#define X_LB &none
+#define X_RT &none
+#define X_RM &none
+#define X_RB &none
 
 /* activate bluetooth */
 #define CONFIG_WIRELESS
@@ -11,5 +21,6 @@
 /* source the main keymap */
 #include "base.keymap"
 
+/* TODO once the outer columns go, then do this */
 /* use 5-column layout for Zen */
-ZMK_APPLY_MATRIX_TRANSFORM(five_column_transform)
+/* ZMK_APPLY_MATRIX_TRANSFORM(five_column_transform) */

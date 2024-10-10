@@ -19,13 +19,13 @@
 ---
 manifest:
   defaults:
-    remote: urob
+    remote: bantonsson
 
   remotes:
     - name: upstream
       url-base: https://github.com/zmkfirmware
-    - name: urob
-      url-base: https://github.com/urob
+    - name: bantonsson
+      url-base: https://github.com/bantonsson
 
   projects:
     - name: zmk-helpers
