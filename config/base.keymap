@@ -68,22 +68,22 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS) // Right-hand HRMs.
   ZMK_COMBO_6(NAME, &hm_combo_##NAME HOLD 0, POS, LAYERS, COMBO_MS, IDLE_MS)
 
 // Home row mods
-#define HML4 LGUI
-#define HL4(KEY) LG(KEY)
-#define HML3 LALT
-#define HL3(KEY) LA(KEY)
-#define HML2 LSHFT
-#define HL2(KEY) LS(KEY)
-#define HML1 LCTRL
-#define HL1(KEY) LC(KEY)
-#define HMR1 LCTRL
-#define HR1(KEY) LC(KEY)
-#define HMR2 RSHFT
-#define HR2(KEY) RS(KEY)
-#define HMR3 LALT
-#define HR3(KEY) LA(KEY)
-#define HMR4 LGUI
-#define HR4(KEY) LG(KEY)
+#define HML4 LCTRL
+#define HL4(KEY) LC(KEY)
+#define HML3 LSHFT
+#define HL3(KEY) LS(KEY)
+#define HML2 LALT
+#define HL2(KEY) LA(KEY)
+#define HML1 LGUI
+#define HL1(KEY) LG(KEY)
+#define HMR1 LGUI
+#define HR1(KEY) LG(KEY)
+#define HMR2 LALT
+#define HR2(KEY) LA(KEY)
+#define HMR3 RSHFT
+#define HR3(KEY) RS(KEY)
+#define HMR4 LCTRL
+#define HR4(KEY) LC(KEY)
 
 /* Combos, leader key sequences, mouse emulation */
 
